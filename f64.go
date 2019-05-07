@@ -1,4 +1,4 @@
-// Copyright 2015 SeukWon Kang (kasworld@gmail.com)
+// Copyright 2015,2016,2017,2018,2019 SeukWon Kang (kasworld@gmail.com)
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -20,7 +20,7 @@ type F64 struct {
 	v     float64
 	min   float64
 	max   float64
-	state State_Type
+	state SubRangeState
 }
 
 func (si F64) String() string {
@@ -38,7 +38,7 @@ func NewF64(v, min, max float64) *F64 {
 func (si F64) GetValue() float64 {
 	return si.v
 }
-func (si *F64) GetState() State_Type {
+func (si *F64) GetState() SubRangeState {
 	return si.state
 }
 func (si F64) GetRate() float64 {
@@ -72,20 +72,20 @@ func (si *F64) SetRate(v float64) {
 func (si *F64) Normalize() {
 	switch {
 	case si.max <= si.min:
-		si.state = SI_Nan
+		si.state = SR_Nan
 	case si.v < si.min:
 		si.v = si.min
-		si.state = SI_Under
+		si.state = SR_Under
 	case si.v > si.max:
 		si.v = si.max
-		si.state = SI_Over
+		si.state = SR_Over
 	default:
-		si.state = SI_Normal
+		si.state = SR_Normal
 	}
 	return
 }
 func (si *F64) ClearState() {
-	si.state = SI_Normal
+	si.state = SR_Normal
 }
 func (si *F64) Add(v float64) {
 	si.ClearState()

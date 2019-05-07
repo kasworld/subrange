@@ -1,4 +1,4 @@
-// Copyright 2015 SeukWon Kang (kasworld@gmail.com)
+// Copyright 2015,2016,2017,2018,2019 SeukWon Kang (kasworld@gmail.com)
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -20,7 +20,7 @@ type i64base struct {
 	v     int64
 	min   int64
 	max   int64
-	state State_Type
+	state SubRangeState
 }
 
 func (si i64base) String() string {
@@ -37,7 +37,7 @@ func newi64base(v, min, max int64) i64base {
 func (si i64base) GetValue() int64 {
 	return si.v
 }
-func (si i64base) GetState() State_Type {
+func (si i64base) GetState() SubRangeState {
 	return si.state
 }
 func (si i64base) GetRate() float64 {
@@ -55,5 +55,5 @@ func (si i64base) GetMin() int64 {
 	return si.min
 }
 func (si *i64base) ClearState() {
-	si.state = SI_Normal
+	si.state = SR_Normal
 }

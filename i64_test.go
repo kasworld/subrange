@@ -1,4 +1,4 @@
-// Copyright 2015 SeukWon Kang (kasworld@gmail.com)
+// Copyright 2015,2016,2017,2018,2019 SeukWon Kang (kasworld@gmail.com)
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -53,7 +53,7 @@ func TestFi(t *testing.T) {
 
 func TestNan(t *testing.T) {
 	wi := I64w{}
-	t.Logf("wi %v", wi.GetState() == SI_Nan)
+	t.Logf("wi %v", wi.GetState() == SR_Nan)
 	wi.Normalize()
-	t.Logf("wi %v", wi.GetState() == SI_Nan)
+	t.Logf("wi %v", wi.GetState() == SR_Nan)
 }

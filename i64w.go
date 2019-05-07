@@ -1,4 +1,4 @@
-// Copyright 2015 SeukWon Kang (kasworld@gmail.com)
+// Copyright 2015,2016,2017,2018,2019 SeukWon Kang (kasworld@gmail.com)
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -33,15 +33,15 @@ func NewI64w(v, min, max int64) *I64w {
 func (si *I64w) Normalize() {
 	switch {
 	case si.max <= si.min:
-		si.state = SI_Nan
+		si.state = SR_Nan
 	case si.v < si.min:
 		si.v = Wrap(si.v-si.min, si.GetLen()) + si.min
-		si.state = SI_WrapedUnder
+		si.state = SR_WrapedUnder
 	case si.v > si.max:
 		si.v = Wrap(si.v-si.min, si.GetLen()) + si.min
-		si.state = SI_WrapedOver
+		si.state = SR_WrapedOver
 	default:
-		si.state = SI_Normal
+		si.state = SR_Normal
 	}
 }
 func (si *I64w) SetMax(v int64) {

@@ -1,4 +1,4 @@
-// Copyright 2015 SeukWon Kang (kasworld@gmail.com)
+// Copyright 2015,2016,2017,2018,2019 SeukWon Kang (kasworld@gmail.com)
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -12,13 +12,14 @@
 // ranged value with saturated arithmetic
 package subrange
 
-type State_Type uint8
+//go:generate stringer -type=SubRangeState
+type SubRangeState uint8
 
 const (
-	SI_Nan = State_Type(iota)
-	SI_Normal
-	SI_Under
-	SI_Over
-	SI_WrapedUnder
-	SI_WrapedOver
+	SR_Nan SubRangeState = iota
+	SR_Normal
+	SR_Under
+	SR_Over
+	SR_WrapedUnder
+	SR_WrapedOver
 )

@@ -1,4 +1,4 @@
-// Copyright 2015 SeukWon Kang (kasworld@gmail.com)
+// Copyright 2015,2016,2017,2018,2019 SeukWon Kang (kasworld@gmail.com)
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -28,15 +28,15 @@ func NewI64s(v, min, max int64) *I64s {
 func (si *I64s) Normalize() {
 	switch {
 	case si.max <= si.min:
-		si.state = SI_Nan
+		si.state = SR_Nan
 	case si.v < si.min:
 		si.v = si.min
-		si.state = SI_Under
+		si.state = SR_Under
 	case si.v > si.max:
 		si.v = si.max
-		si.state = SI_Over
+		si.state = SR_Over
 	default:
-		si.state = SI_Normal
+		si.state = SR_Normal
 	}
 	return
 }
